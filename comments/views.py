@@ -28,14 +28,14 @@ class CommentView(View):
             return render(request, 'detail.html', context=context)
         else:
                 '''
-                # 检查到数据不合法，重新渲染详情页，并且渲染表单的错误。
-                # 因此我们传了三个模板变量给 detail.html，
-                # 一个是文章（Post），一个是评论列表，一个是表单 form
-                # 注意这里我们用到了 post.comment_set.all() 方法，
-                # 这个用法有点类似于 Post.objects.all()
-                # 其作用是获取这篇 post 下的的全部评论，
-                # 因为 Post 和 Comment 是 ForeignKey 关联的，
-                # 因此使用 post.comment_set.all() 反向查询全部评论。
+                检查到数据不合法，重新渲染详情页，并且渲染表单的错误。
+                因此我们传了三个模板变量给 detail.html，
+                一个是文章（Post），一个是评论列表，一个是表单 form
+                注意这里我们用到了 post.comment_set.all() 方法，
+                这个用法有点类似于 Post.objects.all()
+                其作用是获取这篇 post 下的的全部评论，
+                因为 Post 和 Comment 是 ForeignKey 关联的，
+                因此使用 post.comment_set.all() 反向查询全部评论。
                 '''
                 comment_list = active.comment_set.all()
                 context = {'post': active, 'form': form, 'comment_list': comment_list}
