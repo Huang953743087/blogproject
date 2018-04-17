@@ -4,7 +4,7 @@
 from django.conf.urls import url
 from django.urls import re_path, path
 
-from blog.views import CategoryView, ArchiveView, DetailView, TagView, AboutView, ConnectView
+from blog.views import CategoryView, ArchiveView, DetailView, TagView, AboutView, ConnectView,SearchView
 
 app_name='blog'
 urlpatterns = [
@@ -18,5 +18,6 @@ urlpatterns = [
     # 按分类查找
     re_path('tag/(?P<pk>[0-9]+)/', TagView.as_view(), name='tag'),
     path('about/', AboutView.as_view(), name='about'),
-    path('connect/', ConnectView.as_view(), name='connect')
+    path('connect/', ConnectView.as_view(), name='connect'),
+    path('search/', SearchView.as_view(), name='search'),
 ]

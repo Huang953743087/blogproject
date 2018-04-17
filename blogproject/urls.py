@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.views.static import serve
 
+from blog.feeds import AllPostsRssFeed
 from blog.views import IndexView
 from blogproject.settings import STATIC_ROOT
 
@@ -27,8 +28,9 @@ urlpatterns = [
     # 管理界面
     path('admin/', admin.site.urls),
     # blog界面
-    path('blog/', include('blog.urls', namespace='blog'),),
+    path('blog/', include('blog.urls', namespace='blog')),
     # 评论界面
     path('comment/', include('comments.urls', namespace='comment')),
     re_path('static/(?P<path>.*)', serve, {"document_root": STATIC_ROOT}),
+    path('all/rss/', AllPostsRssFeed(), name='rss'),
 ]
